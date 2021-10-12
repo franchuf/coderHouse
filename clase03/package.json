@@ -1,0 +1,14 @@
+{
+  "name": "clase03",
+  "version": "1.0.0",
+  "description": "",
+  "main": "entregable.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Francisco Faner <franchuf@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
