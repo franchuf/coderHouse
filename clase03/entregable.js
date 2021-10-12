@@ -6,8 +6,8 @@ const modulo = require ("../clase02/promesas")
 
 const contenedor = new modulo.Contenedor ("productos")
 
-contenedor.save({a:1}); //no se pq pero no me toma el nuevo objeto
-contenedor.save ({b:1});
+//contenedor.save({a:1});
+
 
 let nuevoArray = JSON.parse (fs.readFileSync("./productos.txt" ,'utf-8'))
 
