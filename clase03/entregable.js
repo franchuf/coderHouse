@@ -20,7 +20,7 @@ app.get("/productos", function(req, res){
 app.get("/productoRandom", function(req, res){
     let nuevoArray = JSON.parse(fs.readFileSync("./productos.txt",'utf-8'))
     var x = Math.floor(Math.random()*(nuevoArray.length));
-    console.log(nuevoArray[x])
+    return nuevoArray[x]
 })
 
 
