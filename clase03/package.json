@@ -2,9 +2,9 @@
   "name": "clase03",
   "version": "1.0.0",
   "description": "",
-  "main": "entregable.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon server.js"
   },
   "author": "Francisco Faner <franchuf@gmail.com>",
   "license": "ISC",
