@@ -2,9 +2,11 @@ const express = require ("express");
 const fs = require ('fs');
 const modulo = require ('./src/promesas')
 
-const prueba = new modulo.Contendor('prueba')
-
 const app = express ();
+
+const prueba = new modulo.Contenedor('prueba')
+prueba.save({a:1})
+
 
 app.get("/productos", function(req, res){
     let nuevoArray = JSON.parse (fs.readFileSync("./productos.txt" ,'utf-8'))
@@ -22,3 +24,4 @@ app.listen (8041, function(){
     console.log("server running on port 8080")
 })
 
+const cont1 = new modulo.Contenedor("prueba")
