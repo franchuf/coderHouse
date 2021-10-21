@@ -23,7 +23,6 @@ router.get("/:id",(req,res)=>{
 })
 //recibe y agrega un producto, y lo devuelve con su id asignado
 router.post("/",(req,res)=>{
-   
     let nuevoId = array.length + 2 //crea el id que corresponde
     let nuevoObj = req.body // toma el objeto ingresado por el cliente y lo mete en nuevoObj
     nuevoObj.id = nuevoId //le agrega la llave id con el valor que corresponde
@@ -31,15 +30,11 @@ router.post("/",(req,res)=>{
     res.send(nuevoObj) //devuelve el objeto con la id nueva
 })
 // recibe y actualiza un producto según su id.
-router.put("/",(req,res)=>{
-    array.forEach(element => {
-        if (element === req.params.id+1){
-            array[element] = req.body
-        }else {
-            res.json({ error : 'producto no encontrado' })
-        }
-    });
-
+router.put("/:id",(req,res)=>{   
+    console.log (array)
+    let encontrado = array.find(function (element) {element.id===req.params.id})
+    res.json(encontrado)
+    
 })
 // elimina un producto según su id.
 router.delete ("/", (req,res)=>{
