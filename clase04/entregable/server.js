@@ -3,12 +3,9 @@ const router = require("./router/webRoutes");
 const bodyParser = require("body-parser")
 
 const app = express ();
+app.use(bodyParser.urlencoded({extended:true}))
 
 app.use(express.json())
-
-
-
-
 
 
 app.use('/api/productos', router)
