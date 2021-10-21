@@ -31,9 +31,9 @@ router.post("/",(req,res)=>{
 })
 // recibe y actualiza un producto según su id.
 router.put("/:id",(req,res)=>{   
-    console.log (array)
-    let encontrado = array.find(function (element) {element.id===req.params.id})
-    res.json(encontrado)
+    res.json (array)
+    let encontrado = array.find(function (element) {element.id===1})
+    res.json(encontrado) //no encuentra nada
     
 })
 // elimina un producto según su id.
