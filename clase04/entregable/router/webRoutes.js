@@ -1,7 +1,6 @@
 const express = require ('express');
 const router = express.Router();
 
-
 const array =[{
     id: 1   ,
     title:"regla",
@@ -39,14 +38,8 @@ router.put("/:id",(req,res)=>{
 })
 // elimina un producto según su id.
 router.delete ("/:id", (req,res)=>{
-    // array.forEach(function(producto,index,objeto){
-    //     if(producto.id === req.params.id){
-    //         objeto.splice(index,1)
-    //     }
-    // })
-    // res.json (array)
-// let borrar = array.filter((element)=>element.id == 2)
-let array = array.filter (producto=>producto.id !==req.params.id)
-   res.json(array)
+    let borrar = array.findIndex(element=>element.id==req.params.id)
+    array.splice(borrar,1)
+    res.json(array)
 })
 module.exports = router;
