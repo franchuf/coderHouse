@@ -7,9 +7,12 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="/index.html" method="post">
-        <input type="text">
-    }</form>
+    <form action="/api/productos" method="post">
+        <input type="text" name="title" placeholder="articulo">
+        <input type="number" name="price" placeholder="precio">
+        <input type="text" name="thumbnail" placeholder="url">
+        <button type="submit" name="submit">Enviar</button>
+    </form>
 
 </body>
 </html>

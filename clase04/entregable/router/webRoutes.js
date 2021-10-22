@@ -15,7 +15,8 @@ const array =[{
 }]
 //-> devuelve todos los productos.
 router.get("/",(req,res)=>{
-    res.json(array)
+    console.log(__dirname)
+    res.sendFile ("/home/francho/coderHouse/clase04/entregable/public/index.html")
 })
 //devuelve un producto según su id.
 router.get("/:id",(req,res)=>{
@@ -23,11 +24,14 @@ router.get("/:id",(req,res)=>{
 })
 //recibe y agrega un producto, y lo devuelve con su id asignado
 router.post("/",(req,res)=>{
-    let nuevoId = array.length + 2 //crea el id que corresponde
+    
+    let nuevoId = array.length + 1 //crea el id que corresponde
+    let {title,price,thumbnail} = req.body
     let nuevoObj = req.body // toma el objeto ingresado por el cliente y lo mete en nuevoObj
     nuevoObj.id = nuevoId //le agrega la llave id con el valor que corresponde
     array.push(nuevoObj) // pushea el objeto a la base de datos
-    res.send(nuevoObj) //devuelve el objeto con la id nueva
+   // res.json(nuevoObj) //devuelve el objeto con la id nueva
+    res.json(array)
 })
 // recibe y actualiza un producto según su id.
 router.put("/:id",(req,res)=>{   
@@ -36,7 +40,7 @@ router.put("/:id",(req,res)=>{
     res.json(encontrado) //no encuentra nada
     
 })
-// elimina un producto según su id.
+// elimina un producto según su id.  
 router.delete ("/", (req,res)=>{
     let id = req.params
     array.forEach(element => {

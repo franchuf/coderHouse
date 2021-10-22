@@ -10,6 +10,7 @@ app.use(express.json())
 
 app.use('/api/productos', router)
 
+
 const PORT = 8080
 const server = app.listen(PORT, () => {
     console.log(`Servidor escuchando en el puerto ${server.address().port}`)
