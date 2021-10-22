@@ -9,7 +9,9 @@ app.use(express.json())
 
 
 app.use('/api/productos', router)
-
+app.get('/',(req,res)=>{
+    res.sendFile(__dirname + "/public/index.html")
+})
 
 const PORT = 8080
 const server = app.listen(PORT, () => {
