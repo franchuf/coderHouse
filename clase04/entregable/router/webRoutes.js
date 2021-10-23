@@ -16,7 +16,13 @@ const array =[{
 
 //devuelve un producto según su id.
 router.get("/:id",(req,res)=>{
-    res.json(array[req.params.id - 1])
+    if(req.params.id<=array.length){
+        res.json(array[req.params.id - 1])
+    }else{
+        res.json({ error : 'producto no encontrado' })
+    }
+
+    
 })
 //recibe y agrega un producto, y lo devuelve con su id asignado
 router.post("/",(req,res)=>{
@@ -30,16 +36,25 @@ router.post("/",(req,res)=>{
 })
 // recibe y actualiza un producto según su id.
 router.put("/:id",(req,res)=>{
-    //let encontrado = array.filter((element)=>element.id == 2)
-    array[req.params.id].title = req.body.title
-    array[req.params.id].price = req.body.price
-    array[req.params.id].thumbnail = req.body.thumbnail
-    res.json(array)
+    if(req.params.id<=array.length){
+        array[req.params.id-1].title = req.body.title
+        array[req.params.id-1].price = req.body.price
+        array[req.params.id-1].thumbnail = req.body.thumbnail
+        res.json(array)
+    }else{
+        res.json({ error : 'producto no encontrado' })
+    }
+
 })
 // elimina un producto según su id.
 router.delete ("/:id", (req,res)=>{
-    let borrar = array.findIndex(element=>element.id==req.params.id)
-    array.splice(borrar,1)
-    res.json(array)
+    if (req.params.id<=array.length){
+        let borrar = array.findIndex(element=>element.id==req.params.id)
+        array.splice(borrar,1)
+        res.json(array)
+    }else{
+        res.json({ error : 'producto no encontrado' })
+    }
+
 })
 module.exports = router;
