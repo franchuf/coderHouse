@@ -1,4 +1,4 @@
-const fs = require ('fs')
+const fs = require ('fs');
 class Contenedor {
     constructor (nombreArchivo){
         this.nombreArchivo = nombreArchivo
@@ -6,14 +6,14 @@ class Contenedor {
     save(obj) {
         try {
             fs.accessSync(__dirname + "/" + this.nombreArchivo + ".txt"); //verifica si existe o no el archivo
-            console.log('El archivo existe'); //en caso de que exista...
+            //en caso de que exista...
             let completoObj = this.getAll(); //lo lee, lo parsea y lo mete adentro de la variable completoObj
             obj.id = completoObj.length + 1 //al objeto nuevo le agrega el id que será igual al largo del array + 1
             completoObj.push(obj) // ahora le agrega el objeto al array
             fs.writeFileSync("./" + this.nombreArchivo + ".txt" ,JSON.stringify(completoObj))  //lo stringifica y lo escribe en el archivo con el nombre que se parametrizó
             return obj.id
         } catch (err) {
-            console.error("el archivo no existe, se crea uno nuevo");//si el archivo no existe...
+            //si el archivo no existe...
             obj.id = 1 // primero le crea un id y se lo inserta al objeto
             let nuevoArray = [] //crea un arreglo
             nuevoArray.push(obj); // inserta el objeto en el arreglo creado
@@ -21,37 +21,42 @@ class Contenedor {
             return obj.id
         }
         }
-        getAll(){
-            let nuevoArray = JSON.parse (fs.readFileSync("./" + this.nombreArchivo + ".txt",'utf-8'))
-            return nuevoArray
+    getAll(){
+        let nuevoArray = JSON.parse (fs.readFileSync("./" + this.nombreArchivo + ".txt",'utf-8'))
+        return nuevoArray
         }
-        getById(number) {
-            let arregloCompleto = this.getAll()
+    getById(number) {
+        let arregloCompleto = this.getAll()
             return arregloCompleto[number-1]
         }
         deleteById(number){
-            let arregloCompleto = this.getAll()
-            arregloCompleto.forEach(element => {
-                if (number === element.id){
-                arregloCompleto.splice(number-1,1)
+        let arregloCompleto = this.getAll()
+        arregloCompleto.forEach(element => {
+            if (number === element.id){
+            arregloCompleto.splice(number-1,1)
             }
-            fs.writeFileSync("./" + this.nombreArchivo + ".txt" , JSON.stringify(arregloCompleto))
+        fs.writeFileSync("./" + this.nombreArchivo + ".txt" , JSON.stringify(arregloCompleto))
             });
         }
-        deleteAll(){
-            fs.writeFileSync("./" + this.nombreArchivo + ".txt" , "")
+    deleteAll(){
+        fs.writeFileSync("./" + this.nombreArchivo + ".txt" , "")
         }
     }
 
-
+module.exports.Contenedor = Contenedor;
 //Pruebas//
 
-const cont1 = new Contenedor ("productos")
-cont1.save( {
-        title:"titulo cont1",
-        price:"price cont1",
-        thumbnail:"url cont1"
-    })
+//const cont1 = new Contenedor ("productos");
+
+//cont1.save({a:1},{b:2});
+//cont1.save({b:1},{b:2});
+
+
+// cont1.save( {
+//         title:"titulo cont1",
+//         price:"price cont1",
+//         thumbnail:"url cont1"
+//     })
 //console.log (cont1.getById(3))
 //cont1.deleteAll()
 //cont1.deleteById(4)

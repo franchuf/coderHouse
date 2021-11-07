@@ -19,7 +19,10 @@ const array =[{
 //    res.sendFile(process.cwd() + "/public/index.html")
 
 // })
-
+router.get("/",(req,res)=>{
+    res.sendFile(process.cwd() + "/public/index.html")
+ 
+ })
 
 router.get("/productos",(req,res)=>{
     res.render('index',{array})
