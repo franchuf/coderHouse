@@ -36,5 +36,5 @@ httpServer.listen(8081, () => console.log('SERVER ON'))
 
 io.on('connection', socket => {
     console.log('Nuevo cliente conectado!')
-    
+    console.log 
 })

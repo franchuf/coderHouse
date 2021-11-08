@@ -1,6 +1,7 @@
 const express = require ('express');
 const router = express.Router();
 
+
 const array =[{
     id: 1   ,
     title:"regla",
