@@ -15,16 +15,16 @@
         <button type="submit" name="submit">Enviar</button>
     </form>
     <span><a href="/productos">ver productos cargados</a> </span>
-    
+    <p id='info'>aca apareceran los productos</p>
 </body>
 <script>
-    const socket = io();
-socket.on('mi mensaje', data=>{
-    alert(data)
+const socket = io();
+socket.on('productos', data=>{
+    document.getElementById('info').innerHTML = JSON.stringify(data)
+    console.log(JSON.stringify(data))
 })
 </script>
 
 <!-- no me estaría tomando la ruta del js por eso voy a dejar el script embebido en el html -->
 
-<script src="js/index.js"></script>
 </html>
