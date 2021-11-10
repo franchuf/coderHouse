@@ -13,7 +13,7 @@ router.get("/",(req,res)=>{
 router.post('/api/productos',(req,res)=>{
     baseDeDatos.save(req.body)
 
-   // res.redirect('/')
+    res.redirect('/')
 })
 
 router.get('/productos',(req,res)=>{
