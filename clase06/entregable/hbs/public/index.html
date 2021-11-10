@@ -21,8 +21,7 @@
 const socket = io();
 socket.on('productos', data=>{
     document.getElementById('info').innerHTML = JSON.stringify(data)
-    console.log(JSON.stringify(data))
-})
+    })
 </script>
 
 <!-- no me estaría tomando la ruta del js por eso voy a dejar el script embebido en el html -->
