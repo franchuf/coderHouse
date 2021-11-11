@@ -1,4 +1,6 @@
+const { Socket } = require('dgram');
 const express = require ('express');
+const { isObject } = require('util');
 const router = express.Router();
 
 
@@ -17,13 +19,14 @@ const array =[{
 
 //devuelve un producto según su id.
 router.get("/",(req,res)=>{
-   res.sendFile(process.cwd() + "/public/index.html")
-
+    res.sendFile(process.cwd() + "/public/index.html")
+    socket.emit('mi mensaje', 'hola')
+    
 })
 
 
 router.get("/productos",(req,res)=>{
-    res.render("main",{products:array})
+    res.render("main", {products:array})
 })
 //recibe y agrega un producto, y lo devuelve con su id asignado
 router.post("/api/productos",(req,res)=>{
@@ -36,6 +39,8 @@ router.post("/api/productos",(req,res)=>{
     console.log(array)
     res.redirect('/')
 })
+
+
 // recibe y actualiza un producto según su id.
 router.put("/:id",(req,res)=>{
     if(req.params.id<=array.length){
