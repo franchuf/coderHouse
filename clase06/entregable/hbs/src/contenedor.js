@@ -7,10 +7,10 @@ class Contenedor {
         try {
             fs.accessSync(__dirname + "/" + this.nombreArchivo + ".txt"); //verifica si existe o no el archivo
             //en caso de que exista...
-            let completoObj = this.getAll(); //lo lee, lo parsea y lo mete adentro de la variable completoObj
-            obj.id = completoObj.length + 1 //al objeto nuevo le agrega el id que será igual al largo del array + 1
-            completoObj.push(obj) // ahora le agrega el objeto al array
-            fs.writeFileSync("./" + this.nombreArchivo + ".txt" ,JSON.stringify(completoObj))  //lo stringifica y lo escribe en el archivo con el nombre que se parametrizó
+            let arrayDesdeArchivo = this.getAll(); //lo lee, lo parsea y lo mete adentro de la variable arrayDesdeArchivo
+            obj.id =  (arrayDesdeArchivo[arrayDesdeArchivo.length-1].id)+1 //al objeto nuevo le agrega el id que será igual al largo del array + 1
+            arrayDesdeArchivo.push(obj) // ahora agrega el objeto con el nuevo id al array
+            fs.writeFileSync("./" + this.nombreArchivo + ".txt" ,JSON.stringify(arrayDesdeArchivo))  //lo stringifica y lo escribe en el archivo con el nombre que se parametrizó
             return obj.id
         } catch (err) {
             //si el archivo no existe...
@@ -26,21 +26,31 @@ class Contenedor {
         return nuevoArray
         }
     getById(number) {
-        let arregloCompleto = this.getAll()
-            return arregloCompleto[number-1]
+        let arrayDesdeArchivo = this.getAll()
+        let indiceDelArray = arrayDesdeArchivo.findIndex((elemento)=>{return elemento.id===number})    
+        return arrayDesdeArchivo[indiceDelArray]
         }
-        deleteById(number){
-        let arregloCompleto = this.getAll()
-        arregloCompleto.forEach(element => {
-            if (number === element.id){
-            arregloCompleto.splice(number-1,1)
-            }
-        fs.writeFileSync("./" + this.nombreArchivo + ".txt" , JSON.stringify(arregloCompleto))
-            });
+    deleteById(number){
+        let arrayDesdeArchivo = this.getAll()        
+        let arrayFiltrado = arrayDesdeArchivo.filter(elemento=>{return elemento.id!==number})
+        fs.writeFileSync("./" + this.nombreArchivo + ".txt" , JSON.stringify(arrayFiltrado))
+        return arrayFiltrado
         }
+        
     deleteAll(){
         fs.writeFileSync("./" + this.nombreArchivo + ".txt" , "")
         }
     }
 
 module.exports.Contenedor = Contenedor;
+
+
+
+
+
+//Para probar descomentar:
+const nuevoProducto = new Contenedor('baseDeDatos');
+//console.log(nuevoProducto.save({a:1}));
+//console.log(nuevoProducto.getAll())
+// console.log(nuevoProducto.deleteById(4))
+
