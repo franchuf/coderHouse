@@ -49,7 +49,7 @@ module.exports.Contenedor = Contenedor;
 
 
 //Para probar descomentar:
-const nuevoProducto = new Contenedor('baseDeDatos');
+//const nuevoProducto = new Contenedor('baseDeDatos');
 //console.log(nuevoProducto.save({a:1}));
 //console.log(nuevoProducto.getAll())
 // console.log(nuevoProducto.deleteById(4))
