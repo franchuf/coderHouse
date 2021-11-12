@@ -3,9 +3,11 @@ const router = require("./router/webRoutes");
 const bodyParser = require("body-parser")
 const handlebars = require("express-handlebars")
 const modulo = require ('./src/contenedor')
+const fs = require ('fs');
 
 const { Server: HttpServer } = require('http')
-const { Server: IOServer } = require('socket.io')
+const { Server: IOServer } = require('socket.io');
+const { fstat } = require("fs");
 
 const baseDeDatos = new modulo.Contenedor('baseDeDatos')
 
@@ -13,11 +15,7 @@ const app = express ();
 const httpServer = new HttpServer(app)
 const io = new IOServer(httpServer)
 
-const messages = [
-    { author: "Juan", text: "¡Hola! ¿Que tal?" },
-    { author: "Pedro", text: "¡Muy bien! ¿Y vos?" },
-    { author: "Ana", text: "¡Genial!" }
- ];
+const messages = [];
 
 
 app.use(bodyParser.urlencoded({extended:true}))
@@ -46,7 +44,7 @@ io.on('connection', (socket) => { //"connection" se ejecuta la primera vez que s
     io.sockets.emit('productos', baseDeDatos.getAll())
     socket.emit('messages',messages)
     socket.on('new-message',data => {
-        
+        fs.writeFileSync('./mensajes.txt',JSON.stringify(messages))
         messages.push(data);
         io.sockets.emit('messages', messages);
     });
