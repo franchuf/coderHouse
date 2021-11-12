@@ -28,10 +28,11 @@ const socket = io();
 socket.on('productos', data=>{
     document.getElementById('info').innerHTML = JSON.stringify(data)
     })
-    function render(data) {
+function render(data) {
+    const today = new Date()
     const html = data.map((elem, index) => {
         return(`<div>
-            <strong>${elem.author}</strong>:
+            <strong>${today}${elem.author}</strong>:
             <em>${elem.text}</em> </div>`)
     }).join(" ");
     document.getElementById('messages').innerHTML = html;
@@ -45,7 +46,7 @@ socket.on('messages', function(data) { render(data); });
         author: document.getElementById('username').value,
         text: document.getElementById('texto').value
     };
-    socket.emit('new-message', mensaje);
+    socket.emit('new-message',  mensaje);
     return false;
 }
 </script>
