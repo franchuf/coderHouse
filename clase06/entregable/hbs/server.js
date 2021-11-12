@@ -16,7 +16,8 @@ const io = new IOServer(httpServer)
 
 app.use(bodyParser.urlencoded({extended:true}))
 
-// heandelbars-------------------------------------------------
+// heandelbars
+//*-------------------------------------------------*
 app.engine(
     "hbs",
     handlebars({
@@ -28,7 +29,9 @@ app.engine(
 )
 app.set("view engine",".hbs")
 app.set("views","./views")
-// heandelbars-------------------------------------------------
+//*-------------------------------------------------*
+
+
 
 app.use(express.json())
 
