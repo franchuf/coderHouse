@@ -13,6 +13,12 @@ const app = express ();
 const httpServer = new HttpServer(app)
 const io = new IOServer(httpServer)
 
+const messages = [
+    { author: "Juan", text: "¡Hola! ¿Que tal?" },
+    { author: "Pedro", text: "¡Muy bien! ¿Y vos?" },
+    { author: "Ana", text: "¡Genial!" }
+ ];
+
 
 app.use(bodyParser.urlencoded({extended:true}))
 
@@ -40,7 +46,14 @@ app.use('/', router)
 
 io.on('connection', (socket) => { //"connection" se ejecuta la primera vez que se abre una nueva conexión
     console.log('Nuevo cliente conectado!') // Se imprimirá solo la primera vez que se ha abierto la conexión
-    socket.emit('productos', baseDeDatos.getAll())
+    io.sockets.emit('productos', baseDeDatos.getAll())
+    socket.emit('messages',messages)
+    socket.on('new-message',data => {
+        
+        messages.push(data);
+        io.sockets.emit('messages', messages);
+    });
+
 })
 
 

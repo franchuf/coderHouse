@@ -17,11 +17,38 @@
     <span><a href="/productos">ver productos cargados</a> </span>
     <p id='info'>aca apareceran los productos</p>
 </body>
+<form onsubmit="return addMessage(this)">
+    <input type="text" id="username" placeholder="Tu Nombre" >
+    <input type="text" id="texto" placeholder="Cuéntanos algo...">
+    <input type="submit" value="Enviar">
+</form>
+<div id='messages'></div>
 <script>
 const socket = io();
 socket.on('productos', data=>{
     document.getElementById('info').innerHTML = JSON.stringify(data)
     })
+function render(data) {
+    const today = new Date()
+    const html = data.map((elem, index) => {
+        return(`<div>
+            <strong>${today}${elem.author}</strong>:
+            <em>${elem.text}</em> </div>`)
+    }).join(" ");
+    document.getElementById('messages').innerHTML = html;
+}
+
+socket.on('messages', function(data) { render(data); });
+
+
+    function addMessage(e) {
+    const mensaje = {
+        author: document.getElementById('username').value,
+        text: document.getElementById('texto').value
+    };
+    socket.emit('new-message',  mensaje);
+    return false;
+}
 </script>
 
 <!-- no me estaría tomando la ruta del js por eso voy a dejar el script embebido en el html -->
