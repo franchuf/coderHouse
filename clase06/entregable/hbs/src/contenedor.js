@@ -27,7 +27,7 @@ class Contenedor {
         }
     getById(number) {
         let arrayDesdeArchivo = this.getAll()
-        let indiceDelArray = arrayDesdeArchivo.findIndex((elemento)=>{return elemento.id===number})    
+        let indiceDelArray = arrayDesdeArchivo.findIndex((elemento)=>elemento.id===number)    
         return arrayDesdeArchivo[indiceDelArray]
         }
     deleteById(number){
@@ -52,5 +52,5 @@ module.exports.Contenedor = Contenedor;
 //const nuevoProducto = new Contenedor('baseDeDatos');
 //console.log(nuevoProducto.save({a:1}));
 //console.log(nuevoProducto.getAll())
-// console.log(nuevoProducto.deleteById(4))
+//console.log(nuevoProducto.getById(1))
 
