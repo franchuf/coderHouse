@@ -47,7 +47,7 @@ io.on('connection', (socket) => { //"connection" se ejecuta la primera vez que s
     io.sockets.emit('productos', baseDeDatos.getAll())
     socket.emit('messages',messages)
     socket.on('new-message',data => {
-        fs.writeFileSync('./mensajes.txt',JSON.stringify(messages))
+        fs.writeFileSync('./mensajes.txt', JSON.stringify(messages))
         messages.push(data);
         io.sockets.emit('messages', messages);
     });
