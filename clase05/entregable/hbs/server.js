@@ -26,7 +26,7 @@ app.use(express.json())
 
 app.use('/', router)
 
-const PORT = 8080
+const PORT = 8082
 const server = app.listen(PORT, () => {
     console.log(`Servidor escuchando en el puerto ${server.address().port}`)
 })
