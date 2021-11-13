@@ -1,1 +1,1 @@
-[{"author":"franchuf@gmail.com","text":"safasdfas"},{"author":"franchuf@gmail.com","text":"safasdfas1111"}]
+[{"author":"fasdfasd","text":"sadfasd"},{"author":"fasdfasd","text":"sadfasd"},{"author":"fasdfasd","text":"sadfasd"}]
