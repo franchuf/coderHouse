@@ -1,1 +1,1 @@
-[{"title":"hola como va","price":"12","thumbnail":"una uña","submit":"","id":4}]
+[{"title":"tijera","price":"100","thumbnail":"productos.com/tijera","submit":"","id":1},{"title":"regla","price":"150","thumbnail":"productos.com/regla","submit":"","id":2},{"title":"silla","price":"300","thumbnail":"productos.com/silla","submit":"","id":3}]

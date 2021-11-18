@@ -1,5 +1,6 @@
 const express = require ("express");
-const router = require("./router/webRoutes");
+const routerProductos = require("./router/routerProductos");
+const routerCarrito = require("./router/routerCarrito");
 const bodyParser = require("body-parser")
 const modulo = require ('./src/contenedor')
 
@@ -7,15 +8,13 @@ const modulo = require ('./src/contenedor')
 const app = express ();
 app.use(bodyParser.urlencoded({extended:true}))
 
-
-
 app.use(express.json())
 
 const productos = new modulo.Contenedor('dataBase')
 
 app.use(express.static('public'));
-app.use('/api/productos', router); //router para postear productos
-app.use('/carrito', router)
+app.use('/api/productos', routerProductos); 
+app.use('/api/carrito', routerCarrito)
 
 
 const PORT = 8080
