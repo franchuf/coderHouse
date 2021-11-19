@@ -18,9 +18,11 @@ routerCarrito.post('/', (req, res)=>{
     
 })
 routerCarrito.get('/:id/productos', (req, res)=>{
-    res.json(carritos.getAll())
+    res.json(carritos.getByIdCarrito(Number(req.params.id)))
     
 })
+
+
 routerCarrito.post('/:id_carrito/productos/:id_producto', (req, res)=>{
     
     // res.json(parseInt(req.params.id_carrito) + " " + parseInt(req.params.id_producto)) ;
@@ -28,4 +30,11 @@ routerCarrito.post('/:id_carrito/productos/:id_producto', (req, res)=>{
     
 })
 
+routerCarrito.delete('/:id_carrito/productos/:id_producto',(req,res)=>{
+    res.json(carritos.deleteProductoById(Number(req.params.id_carrito),Number(req.params.id_producto)))
+})
+
+routerCarrito.delete('/:id',(req,res)=>{
+    res.json(carritos.deleteCarritoById(Number(req.params.id)))
+})
 module.exports = routerCarrito;
