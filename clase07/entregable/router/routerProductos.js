@@ -19,7 +19,7 @@ routerProductos.post('/', (req, res)=>{
     res.redirect('/')
 })
 routerProductos.put('/:id',(req,res)=>{
-    res.json(productos.modifyById(req.params.id, req.body.title, req.body.price, req.body.thumbnail))
+    res.json(productos.modifyById(req.params.id, req.body.title, req.body.description, req.body.code,req.body.url,req.body.price,req.body.stock))
     
 })
 routerProductos.delete('/:id',(req,res)=>{

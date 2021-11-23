@@ -36,14 +36,17 @@ class Contenedor {
         let indiceDelArray = arrayDesdeArchivo.findIndex((elemento)=>elemento.id===number)
         return arrayDesdeArchivo[indiceDelArray]
         }
-    modifyById(id,newTitle,newPrice,newThumbnail) {
+    modifyById(id,newTitle,newDescription,newCode,newThumbnail,newPrice,newStock) {
         let arrayDesdeArchivo = this.getAll()
         let indiceDelArray = arrayDesdeArchivo.findIndex((elemento)=>elemento.id==id);
         arrayDesdeArchivo[indiceDelArray].title = newTitle;
+        arrayDesdeArchivo[indiceDelArray].description = newDescription;
+        arrayDesdeArchivo[indiceDelArray].code = newCode;
+        arrayDesdeArchivo[indiceDelArray].url = newThumbnail;
         arrayDesdeArchivo[indiceDelArray].price = newPrice;
-        arrayDesdeArchivo[indiceDelArray].thumbnail = newThumbnail;
+        arrayDesdeArchivo[indiceDelArray].stock = newStock;
         fs.writeFileSync("./" + this.nombreArchivo + ".txt" , JSON.stringify(arrayDesdeArchivo));
-        return arrayDesdeArchivo;
+        return arrayDesdeArchivo[indiceDelArray];
     }
     deleteById(number){
         let arrayDesdeArchivo = this.getAll()        
