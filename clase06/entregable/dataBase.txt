@@ -1,0 +1,1 @@
+[{"title":"Regla","description":"regla de 20 cm","code":"0001","url":"www.regla.com","price":"100","stock":"100","submit":"","id":1,"timestamp":1637947048471}]
