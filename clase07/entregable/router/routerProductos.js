@@ -16,7 +16,7 @@ routerProductos.get('/:id',(req,res)=>{
 
 routerProductos.post('/', (req, res)=>{
     productos.save(req.body)
-    res.redirect('/')
+    res.json('producto cargado ok')
 })
 routerProductos.put('/:id',(req,res)=>{
     res.json(productos.modifyById(req.params.id, req.body.title, req.body.description, req.body.code,req.body.url,req.body.price,req.body.stock))
