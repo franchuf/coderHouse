@@ -9,6 +9,7 @@ class Contenedor {
             //en caso de que exista...
             let arrayDesdeArchivo = this.getAll(); //lo lee, lo parsea y lo mete adentro de la variable arrayDesdeArchivo
             obj.id =  (arrayDesdeArchivo[arrayDesdeArchivo.length-1].id)+1 //al objeto nuevo le agrega el ultimo + 1
+            console.log(obj)
             const currentDate = new Date()
             const timestamp = currentDate.getTime()
             obj.timestamp = timestamp
@@ -67,7 +68,8 @@ module.exports.Contenedor = Contenedor;
 
 
 //Para probar descomentar:
-//const nuevoProducto = new Contenedor('baseDeDatos');
+// const nuevoProducto = new Contenedor('baseDeDatos');
+// nuevoProducto.save({})
 //console.log(nuevoProducto.getById(3))
 // console.log(nuevoProducto.save({a:1}));
 //console.log(nuevoProducto.getAll())

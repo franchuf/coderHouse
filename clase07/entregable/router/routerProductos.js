@@ -1,6 +1,6 @@
 const express = require ('express');
 const routerProductos = express.Router();
-const modulo = require ('../src/contenedor')
+const modulo = require ('../src/contenedorProductos')
 const bodyParser = require("body-parser")
 
 routerProductos.use(bodyParser.urlencoded({extended:true}))
@@ -15,6 +15,8 @@ routerProductos.get('/:id',(req,res)=>{
 })
 
 routerProductos.post('/', (req, res)=>{
+    
+    console.log(req.body)
     productos.save(req.body)
     res.json('producto cargado ok')
 })

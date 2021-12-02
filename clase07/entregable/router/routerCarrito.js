@@ -1,8 +1,8 @@
 const express = require ('express');
 const routerCarrito = express.Router();
 const bodyParser = require("body-parser");
-const modulo = require ('../src/contenedor')
-const modulo2 = require ('../src/contenedor2')
+const modulo = require ('../src/contenedorProductos')
+const modulo2 = require ('../src/contenedorCarritos')
 
 routerCarrito.use(bodyParser.urlencoded({extended:true}))
 routerCarrito.use(express.json())

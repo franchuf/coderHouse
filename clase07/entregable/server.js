@@ -2,7 +2,7 @@ const express = require ("express");
 const routerProductos = require("./router/routerProductos");
 const routerCarrito = require("./router/routerCarrito");
 const bodyParser = require("body-parser")
-const modulo = require ('./src/contenedor')
+const modulo = require ('./src/contenedorProductos')
 
 
 const app = express ();
