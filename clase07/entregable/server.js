@@ -15,7 +15,11 @@ const productos = new modulo.Contenedor('dataBase')
 app.use(express.static('public'));
 app.use('/api/productos', routerProductos); 
 app.use('/api/carrito', routerCarrito)
-
+app.use('/*', function(req, res){
+    console.log(req.params);
+    res.json({error:-2,
+        descripcion:  `ruta ${req.originalUrl}, metodo ${req.method} no implementado`});
+});
 
 const PORT = 8080
 const server = app.listen(PORT, () => {
