@@ -11,14 +11,14 @@ const cities = {
 function getUsers() {
     return new Promise ((resolve, reject)=>{
         setTimeout(()=>{
-            resolve (users);
+            resolve (users); //resolve = return
         },3000)
     })
 }
 function getCities (){
     return new Promise ((resolve, reject)=>{
         setTimeout(()=>{
-            resolve(cities)
+            resolve(cities) //resolve =  return
         },1000)
     })
 }

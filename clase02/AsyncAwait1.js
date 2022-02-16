@@ -1,4 +1,8 @@
-const fs = require('fs')
+import fs from 'fs'
+
+// function escribirArchivo() {
+//     fs.writeFile('prueba.txt','test')
+// }
 
 function escribirArchivo() {
     return new Promise(resolve=>{
@@ -17,10 +21,14 @@ function escribirMensaje(){
 
     })
 }
-async function main(){
-const escritura = await escribirArchivo()
-const mensaje = await escribirMensaje()
-console.log(escritura);
-console.log(mensaje);
-}
-main ()
+
+escribirArchivo().then((res)=>{console.log(res);})
+
+
+// async function main(){
+// const escritura = await escribirArchivo()
+// const mensaje = await escribirMensaje()
+// console.log(escritura);
+// console.log(mensaje);
+// }
+// main ()

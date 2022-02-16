@@ -9,7 +9,7 @@ routerProductos.use(express.json())
 function getUser() {
     return {
         name: 'francisco',
-        admin : false,
+        admin : true,
     }
 }
 const middleware = (req,res,next) => {
