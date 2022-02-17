@@ -2,14 +2,13 @@ import express from 'express';
 import routerProductos from './router/routerProductos.js';
 import routerCarrito from './router/routerCarrito.js';
 import bodyParser from 'body-parser';
-import modulo from './src/contenedorProductos.js';
-
+import moduloProductos from './src/contenedorProductos.js';
 
 const app = express ();
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.json())
 
-const productos = new modulo.Contenedor('dataBase')
+//const productos = new moduloProductos.ContenedorProductos('dataBase')
 
 app.use(express.static('public'));
 app.use('/api/productos', routerProductos); 
