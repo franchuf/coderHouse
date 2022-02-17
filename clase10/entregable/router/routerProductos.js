@@ -1,13 +1,13 @@
 import express from 'express';
 import bodyParser from 'body-parser'
-import {Contenedor as modulo} from '../src/contenedorProductos.js';
+import ContenedorProductos  from '../src/contenedorProductos.js';
 
 const routerProductos = express.Router();
 
 routerProductos.use(bodyParser.urlencoded({ extended: true }))
 routerProductos.use(express.json())
 
-const productos = new modulo('dataBase')
+const productos = new ContenedorProductos ('dataBase')
 
 routerProductos.get('/', (req, res) => {
     res.json(productos.getAll())

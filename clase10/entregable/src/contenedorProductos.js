@@ -1,7 +1,7 @@
 import fs from 'fs';
 import ProductosDAO from '../DAOS/ProductosDAO.js'
 
-export class ContenedorProductos {
+export default class ContenedorProductos {
     constructor (nombreArchivo){
         this.nombreArchivo = nombreArchivo
     }
