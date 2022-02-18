@@ -1,8 +1,8 @@
-import llegada , {insulto as mensaje,salida as mensaje2}  from './prueba.js'
+import llegadaconalias , {insulto as mensaje,salida as mensaje2}  from './prueba.js'
 
 
 
-console.log(llegada());
+console.log(llegadaconalias());
 console.log(mensaje());
 console.log(mensaje2());
 

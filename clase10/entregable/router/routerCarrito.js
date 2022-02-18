@@ -1,7 +1,8 @@
 import express from 'express';
-import routerCarrito from express.Router();
 import bodyParser from "body-parser";
 import ContenedorCarritos from '../src/contenedorCarritos.js'
+
+const routerCarrito = express.Router()
 
 routerCarrito.use(bodyParser.urlencoded({extended:true}))
 routerCarrito.use(express.json())

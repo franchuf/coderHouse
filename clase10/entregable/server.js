@@ -2,7 +2,7 @@ import express from 'express';
 import routerProductos from './router/routerProductos.js';
 import routerCarrito from './router/routerCarrito.js';
 import bodyParser from 'body-parser';
-import moduloProductos from './src/contenedorProductos.js';
+//import moduloProductos from './src/contenedorProductos.js';
 
 const app = express ();
 app.use(bodyParser.urlencoded({extended:true}))

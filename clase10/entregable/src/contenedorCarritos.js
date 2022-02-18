@@ -1,5 +1,5 @@
 const fs = require ('fs');
-export class ContenedorCarritos {
+export default class ContenedorCarritos {
     constructor (nombreArchivo){
         this.nombreArchivo = nombreArchivo
     }
