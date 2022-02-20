@@ -1,4 +1,5 @@
-const fs = require ('fs');
+import fs from 'fs'
+//const fs = require ('fs');
 export default class ContenedorCarritos {
     constructor (nombreArchivo){
         this.nombreArchivo = nombreArchivo
