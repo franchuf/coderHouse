@@ -10,6 +10,7 @@ routerProductos.use(express.json())
 const productos = new ContenedorProductos ('dataBase')
 
 routerProductos.get('/', (req, res) => {
+    console.log(productos.getAll());
     res.json(productos.getAll())
 })
 routerProductos.get('/:id', (req, res) => {

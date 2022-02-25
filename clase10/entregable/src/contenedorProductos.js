@@ -1,5 +1,5 @@
 import fs from 'fs';
-import ProductosDAO from '../DAOS/ProductosDAO.js'
+//import ProductosDAO from '../DAOS/ProductosDAO.js'
 
 export default class ContenedorProductos {
     constructor (nombreArchivo){
@@ -31,11 +31,14 @@ export default class ContenedorProductos {
         }
         }
     getAll(){
-        
-        
-        // let nuevoArray = JSON.parse (fs.readFileSync("./" + this.nombreArchivo + ".txt",'utf-8'))
-        // return nuevoArray
+        try {
+            let nuevoArray = JSON.parse (fs.readFileSync("./" + this.nombreArchivo + ".txt",'utf-8'))
+            return nuevoArray
+        }catch (error){
+            return[]
         }
+        }
+    
     getById(number) {
         let arrayDesdeArchivo = this.getAll()
         let indiceDelArray = arrayDesdeArchivo.findIndex((elemento)=>elemento.id===number)
