@@ -1,24 +1,16 @@
 import mongoose from 'mongoose'
-
-const productosSchema = new mongoose.Schema({
-    title: { type: String, required: true },
-    description: { type: String, required: true },
-    code: { type: String, required: true },
-    url: { type: String, required: true, unique: true },
-    price: { type: Number, required: true },
-    stock: { type: Number, required: true },
-})
-
-const productos = [
-    {title: 'compas',description:'compas de plastico',code:'101',url:'/compas/',price:100,stock:10},
-    {title: 'regla',description:'de 20 cm',code:'102',url:'/regla/',price:200,stock:20 }
-]
+import { productosSchema } from './models.js'
 
 const ProductosDAO = mongoose.model('productos',productosSchema) //crea el modelo, como si fuera la clase. EL primer parametro es el nombre de la collection, y el segundo parametro es el schema.
 
-mongoose.connect('mongodb://localhost/ecommerceDB')
+const uri = 'mongodb://localhost:27017/ecommerceDB'
+mongoose.connect(uri)
+mongoose.connection.on('open', _ =>{
+    console.log('Database conected to ', uri);
+})
 
-console.log("cliente conectado");
+
+
 
 //metodo para insertar productos
 // for(const producto of productos){ //metodo dos
